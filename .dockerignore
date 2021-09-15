@@ -1,0 +1,8 @@
+# Ignore every file or directory
+*
+
+# Do not ignore the following directories
+!src
+
+# Do not ignore the following files
+!requirements.txt
