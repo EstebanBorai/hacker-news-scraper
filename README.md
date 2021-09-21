@@ -1,3 +1,10 @@
+<div>
+  <h1 align="center">hacker-news-scraper</h1>
+  <h4 align="center">
+    A example web scraper for Hacker News exposed through a REST API
+  </h4>
+</div>
+
 ## Production
 
 ```bash
@@ -30,3 +37,55 @@ Then execute:
 ```bash
 docker-compose -f ./docker-compose.dev.yml down
 ```
+
+### Scraper
+
+Scrapy is used as _web crawler_/_scraper_ solution to retrieve posts from
+Hacker News in this project.
+
+The _Scrapy_ project is stored under `src/scraper` and contains the:
+`HackerNewsBotSpider`.
+
+In order to use _Scrapy_ shell you must [execute the docker-compose](#execute)
+and use `docker exec` to SSH into the running container.
+
+1. Execute `docker ps` to gather container details
+
+```bash
+docker ps
+```
+
+2. Copy the relevant `CONTAINER ID` to your clipboard
+
+3. Execute `docker exec -it <CONTAINER ID> bash`
+
+> At this point you will be using the container's BASH instance.
+
+4. Change directory to `src/scraper` and then execute the _Scrapy_ shell
+
+```bash
+scrapy shell
+```
+
+With the Scrapy shell you will be able to debug and test CSS selectors to
+gather data from the website in question.
+
+### Running _Scrapy_ Spider
+
+As mentioned above, a `HackerNewsBotSpider` is available, the purpose of this
+spider is to retrieve post details from Hacker News.
+
+Following the ["Scraper" instructions](#scraper) to the third step, run
+
+```bash
+scrapy crawl hacker_news_bot
+```
+
+instead of:
+
+```bash
+scrapy shell
+```
+
+To have the bot executed. This command should output the scraped data as part of
+the debug output in the terminal.
