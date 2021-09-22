@@ -2,7 +2,7 @@ import scrapy
 
 class HackerNewsBotSpider(scrapy.Spider):
     name = 'hacker_news_bot'
-    allowed_domains = ['https://news.ycombinator.com']
+    allowed_domains = ['news.ycombinator.com']
     start_urls = ['https://news.ycombinator.com/']
 
     def parse(self, response):
@@ -14,13 +14,13 @@ class HackerNewsBotSpider(scrapy.Spider):
         domain = response.css('.sitestr::text').extract()
 
         for item in zip(titles, ranks, scores, users, times, domain):
-            post = {
+            self.results.append({
                 'title': item[0],
                 'rank': item[1],
                 'score': item[2],
                 'user': item[3],
                 'time': item[4],
                 'domain': item[5],
-            }
+            })
 
-            yield post
+        return True

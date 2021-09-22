@@ -38,6 +38,26 @@ Then execute:
 docker-compose -f ./docker-compose.dev.yml down
 ```
 
+### HTTP Server
+
+An HTTP Server acts as the interface to consume this application.
+Endpoints are enumerated in the following table:
+
+Method | URI | Description
+--- | --- | ---
+`GET` | `/crawl` | Executes the `HackerNewsBotSpider` and retrieves the state
+`GET` | `/results` | Retrieves the results from the `/crawl` process if available
+`GET` | `/context` | Retrieves the current state for relevant values
+
+In order to execute any of these HTTP requests you must first follow the
+[Execute](#execute) section and an HTTP client such as _cURL_.
+
+Example of a cURL call to this API while running.
+
+```bash
+curl http://0.0.0.0:5000/crawl
+```
+
 ### Scraper
 
 Scrapy is used as _web crawler_/_scraper_ solution to retrieve posts from
