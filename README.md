@@ -109,3 +109,12 @@ scrapy shell
 
 To have the bot executed. This command should output the scraped data as part of
 the debug output in the terminal.
+
+### Dependencies
+
+- **Flask**: Lightweight WSGI (Web Server Gateway Interface) web application
+framework
+- **crochet**: Makes it easier to use Twisted from regular blocking code
+- **Scrapy**: DOM Scraper useful for crawling the web
+- **Twisted**: Multi-purpose event based framework
+

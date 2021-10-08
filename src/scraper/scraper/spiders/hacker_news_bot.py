@@ -3,7 +3,7 @@ import scrapy
 class HackerNewsBotSpider(scrapy.Spider):
     name = 'hacker_news_bot'
     allowed_domains = ['news.ycombinator.com']
-    start_urls = ['https://news.ycombinator.com/']
+    start_urls = ['https://news.ycombinator.com/news?p=1']
 
     def parse(self, response):
         titles = response.css('.title .storylink::text').extract()
